@@ -1,0 +1,67 @@
+<template>
+  <v-container>
+    <v-row justify="center">
+      <v-col cols="12" sm="10" md="8">
+        <v-card>
+          <v-card-title class="text-center">
+            <h2>Profile</h2>
+          </v-card-title>
+          <v-card-text>
+            <v-card v-for="(post, index) in posts" :key="index" class="mb-3">
+              <v-row no-gutters>
+                <v-col cols="2">
+                  <v-img :src="post.cover" height="100%" width="100%"></v-img>
+                </v-col>
+
+                <v-col cols="8">
+                  <v-card-text class="custom-line-spacing">
+                    <p>ຊື່ ແລະ ນາມສະກຸນ:</p>
+                    <p>ເພດ:</p>
+                    <p>ວັນເດືອນປີເກີດ:</p>
+                    <p>ທີ່ຢູ່:</p>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn text color="primary">ແກ້ໄຂຂໍ້ມູນສ່ວນຕົວ</v-btn>
+                  </v-card-actions>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <v-row justify="center">
+      <v-col cols="12" sm="10" md="8">
+        <v-card>
+          <v-tabs fixed-tabs background-color="indigo" dark>
+            <v-tab> ກະທູ້ທີ່ຕັ້ງ </v-tab>
+            <v-tab> ກະທູ້ທີ່ມັກ </v-tab>
+            <v-tab> ປະຫວັດການເຂົ້າອ່ານ </v-tab>
+            <v-tab> ແທັກທີ່ຕິດຕາມ </v-tab>
+          </v-tabs>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      posts: [
+        {
+          
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style>
+.custom-line-spacing p {
+  margin-bottom: 6px; /* Adjust the margin-bottom value as needed */
+}
+</style>
