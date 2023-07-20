@@ -1,20 +1,8 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items.slice(0, 5)"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item v-for="(item, i) in items.slice(0, 5)" :key="i" :to="item.to" router exact>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -25,23 +13,19 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
+      <edit_profile
+      v-model="dialog"></edit_profile>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>{{ items.title }}</v-toolbar-title>
-      <v-text-field     
-      label="Search"
-      placeholder="ຊື່ກະທູ້, ຊື່ແທັກ, ໝວດໝູ່"
-      outlined
-      hide-details
-      solo
-      dense
-      class="custom-text-field"
-    ></v-text-field>
-    <v-btn icon>
-      <v-icon>mdi-magnify</v-icon>
-    </v-btn>
+        <v-toolbar-title>{{ items.title }}</v-toolbar-title>
+      <v-text-field label="Search" placeholder="ຊື່ກະທູ້, ຊື່ແທັກ, ໝວດໝູ່" outlined hide-details solo dense
+        class="custom-text-field "></v-text-field>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      
       <v-spacer />
 
-      
+
       <v-btn color="primary" text>
         <v-icon>mdi-comment-plus-outline</v-icon>
         <span>ສ້າງກະທູ້ໃໝ່</span>
@@ -55,10 +39,7 @@
           <v-tooltip bottom>
             <template v-slot:activator="{ on: tooltipOn }">
               <v-avatar color="primary" dark v-on="{ ...tooltipOn, ...on }">
-                <img
-                  src="https://cdn.vuetifyjs.com/images/john.jpg"
-                  alt="John"
-                />
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
               </v-avatar>
             </template>
             <span>Profile</span>
@@ -66,14 +47,12 @@
         </template>
 
         <v-list>
-          <v-list-item
-            v-for="(item, i) in items.slice(4, 7)"
-            :key="i"
-            :to="item.to"
-            router
-            exact
-          >
-            <v-list-item-title>{{ item.list }}</v-list-item-title>
+          <v-list-item v-for="(item, i) in items.slice(5, 9)" :key="i" :to="item.to" router exact @click="test(i)">
+            
+            <v-list-item-title  >
+              <span >{{ item.list }}</span>
+              <!-- <v-card  @click="test" v-if="item.list=='Manage Profile'">Manage Profile</v-card> -->
+            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -90,8 +69,10 @@
 </template>
 
 <script>
+import edit_profile from "~/components/edit_profile"
 export default {
   name: "DefaultLayout",
+  components: {edit_profile},
   data() {
     return {
       clipped: false,
@@ -129,10 +110,14 @@ export default {
         },
         {
           list: "Manage Profile",
-          to: "/manage/profile",
+          to: "",
         },
         {
           list: "Setting",
+          to: "/manage/setting",
+        },
+        {
+          list: "Log Out",
           to: "/manage/setting",
         },
       ],
@@ -140,13 +125,40 @@ export default {
       right: true,
       rightDrawer: false,
       title: "Report",
+      dialog: false,
     };
+  },
+  methods: {
+    test(i){
+      console.log("test log",i)
+      if(i==1){
+        console.log("open dialog")
+        this.dialog = true
+      }
+    },
+    onMenuItemClick(item) {
+      if (item === 'Log Out') {
+        // Call the logout method here
+        this.logout();
+      } else {
+        // Handle other menu items
+        console.log(item);
+      }
+    },
+    logout() {
+      // Call the logout API or clear authentication tokens or session data
+      // For demonstration purposes, we will simply update the authentication state
+      this.$store.commit('setAuthenticated', false);
+      // Optionally, redirect to the login page or a home page after logout
+      // this.$router.push('/login'); // Replace '/login' with the appropriate route
+    },
   },
 };
 </script>
 
 <style scoped>
 .custom-text-field {
-  width: 50px; /* Adjust the width as needed */
+  width: 50px;
+  /* Adjust the width as needed */
 }
 </style>
