@@ -13,7 +13,7 @@
             <v-spacer></v-spacer>
             <subtitle-1 style="font-size: 14px;"> ຈຳນວນ 500 ຄົນ </subtitle-1>
           </template>
-          <v-card>
+          <v-card id="card">
             <v-row>
               <v-col class=" d-flex justify-end mr-3 pt-6">
                 <v-icon color="primary" @click="close">
@@ -29,21 +29,6 @@
             <v-card-text>
               <v-container>
                 <v-row>
-                  <!-- <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.id" label="id"></v-text-field>
-                  </v-col> -->
-                  <!-- <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.topic" label="topic"></v-text-field>
-                  </v-col> -->
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.fat" label="Fat (g)"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
-                  </v-col>
                   <v-row>
                     <v-col cols="3">
                       <v-subheader>ລະຫັດກະທູ້:</v-subheader>
@@ -79,16 +64,11 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn color="primary ml-6 font-weight-bold " dark class="mb-2" @click="save">
-                + ເພີ່ມໃໝ່
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="close">
-                Cancel
-              </v-btn>
-              <v-btn color="blue darken-1" text @click="save">
-                Save
-              </v-btn>
+              <v-col class="d-flex  justify-center">
+                <v-btn color="primary" class="ml-6 font-weight-bold" dark @click="save">
+                  + ເພີ່ມໃໝ່
+                </v-btn>
+              </v-col>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -281,24 +261,16 @@ export default {
     },
     onFileChange(event) {
       this.selectedFile = event.target.files[0];
-      // You can now use this.selectedFile to access the selected image file
-      // For example, you can upload it to the server or process it further
-      // Example: this.uploadImageToServer();
     },
     uploadImageToServer() {
-      // Implement your logic to upload the image to the server here
-      // You can use libraries like Axios, fetch API, etc., to send the file to the server
-      // Example with Axios:
-      // const formData = new FormData();
-      // formData.append('image', this.selectedFile);
-      // axios.post('/upload-image', formData)
-      //   .then(response => {
-      //     console.log('Image uploaded successfully:', response.data);
-      //   })
-      //   .catch(error => {
-      //     console.error('Error uploading image:', error);
-      //   });
     },
   },
 }
 </script>
+
+<style scoped>
+#card {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+</style>
