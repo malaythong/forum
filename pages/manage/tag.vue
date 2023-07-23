@@ -62,7 +62,7 @@
                                             <v-textarea single-line outlined v-model="editedItem.detail"
                                                 label="Text"></v-textarea>
                                         </v-col>
-                                        
+
                                     </v-row>
                                 </v-row>
                             </v-container>
@@ -252,4 +252,5 @@ export default {
 #card {
     overflow-y: hidden;
     overflow-x: hidden;
-}</style>
+}
+</style>

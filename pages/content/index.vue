@@ -3,9 +3,6 @@
     <v-row justify="center">
       <v-col cols="12" sm="8" md="6">
         <v-card elevation="0">
-          <v-card-title class="text-center">
-            <h2>Welcome to the Forum</h2>
-          </v-card-title>
           <v-tabs fixed-tabs background-color="primary" dark>
             <v-tab> ທັງໝົດ </v-tab>
             <v-tab> ແນະນຳ </v-tab>
