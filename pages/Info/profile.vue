@@ -9,8 +9,8 @@
           <v-card-text>
             <v-card v-for="(post, index) in posts" :key="index" class="mb-3">
               <v-row no-gutters>
-                <v-col cols="2">
-                  <v-img :src="post.cover" height="100%" width="100%"></v-img>
+                <v-col cols="2" class="d-flex align-center ml-6">
+                  <v-img :src="post.cover" height="50%" width="100%"></v-img>
                 </v-col>
 
                 <v-col cols="8">
@@ -52,7 +52,7 @@ export default {
     return {
       posts: [
         {
-          
+          cover: "https://www.newshub.co.nz/home/lifestyle/2019/08/the-top-five-cat-memes-of-all-time-rated/_jcr_content/par/video/image.dynimg.1280.q75.jpg/v1565234972425/KNOWYOURMEME-sad-cat-crying-1120.jpg",
         },
       ],
     };

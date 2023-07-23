@@ -13,20 +13,20 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <edit_profile
-      v-model="dialog"></edit_profile>
+      <edit_profile v-model="dialog"></edit_profile>
+      <settingAccount v-model="dialogg"></settingAccount>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-        <v-toolbar-title>{{ items.title }}</v-toolbar-title>
+      <v-toolbar-title>{{ items.title }}</v-toolbar-title>
       <v-text-field label="Search" placeholder="ຊື່ກະທູ້, ຊື່ແທັກ, ໝວດໝູ່" outlined hide-details solo dense
         class="custom-text-field "></v-text-field>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      
+
       <v-spacer />
 
 
-      <v-btn color="primary" text>
+      <v-btn color="primary" text @click="createNewTopic">
         <v-icon>mdi-comment-plus-outline</v-icon>
         <span>ສ້າງກະທູ້ໃໝ່</span>
       </v-btn>
@@ -48,9 +48,9 @@
 
         <v-list>
           <v-list-item v-for="(item, i) in items.slice(5, 9)" :key="i" :to="item.to" router exact @click="test(i)">
-            
-            <v-list-item-title  >
-              <span >{{ item.list }}</span>
+
+            <v-list-item-title>
+              <span>{{ item.list }}</span>
               <!-- <v-card  @click="test" v-if="item.list=='Manage Profile'">Manage Profile</v-card> -->
             </v-list-item-title>
           </v-list-item>
@@ -70,9 +70,10 @@
 
 <script>
 import edit_profile from "~/components/edit_profile"
+import settingAccount from "~/components/settingAccount"
 export default {
   name: "DefaultLayout",
-  components: {edit_profile},
+  components: { edit_profile, settingAccount },
   data() {
     return {
       clipped: false,
@@ -105,19 +106,19 @@ export default {
           to: "/report/contact_admin",
         },
         {
-          list: "My Profile",
+          list: "ບັນຊີ",
           to: "/info/profile",
         },
         {
-          list: "Manage Profile",
+          list: "ຈັດການບັນຊີ",
           to: "",
         },
         {
-          list: "Setting",
-          to: "/manage/setting",
+          list: "ຕັ້ງຄ່າ",
+          to: "",
         },
         {
-          list: "Log Out",
+          list: "ອອກຈາກລະບົບ",
           to: "/manage/setting",
         },
       ],
@@ -126,14 +127,19 @@ export default {
       rightDrawer: false,
       title: "Report",
       dialog: false,
+      dialogg: false,
     };
   },
   methods: {
-    test(i){
-      console.log("test log",i)
-      if(i==1){
+    test(i) {
+      console.log("test log", i)
+      if (i == 1) {
         console.log("open dialog")
         this.dialog = true
+      }
+      if (i == 2) {
+        console.log("open dialogg")
+        this.dialogg = true
       }
     },
     onMenuItemClick(item) {
@@ -146,11 +152,11 @@ export default {
       }
     },
     logout() {
-      // Call the logout API or clear authentication tokens or session data
-      // For demonstration purposes, we will simply update the authentication state
       this.$store.commit('setAuthenticated', false);
-      // Optionally, redirect to the login page or a home page after logout
-      // this.$router.push('/login'); // Replace '/login' with the appropriate route
+    },
+    createNewTopic() {
+      console.log("Button clicked! Create a new topic here.");
+      this.$router.push('/content/create');
     },
   },
 };

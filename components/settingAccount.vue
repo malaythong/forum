@@ -14,7 +14,7 @@
                 <v-card-title>
                     <v-row>
                         <v-col class=" d-flex justify-center" no-gutters>
-                            <span class="text-h5">ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້</span>
+                            <span class="text-h5">ຕັ້ງຄ່າບັນຊີ</span>
                         </v-col>
                     </v-row>
                 </v-card-title>
@@ -58,24 +58,14 @@
                         <v-row>
                             <v-col cols="2" class=" d-flex align-center" no-gutters>
                                 <v-row>
-                                    <v-subheader hide-details>ເພດ:</v-subheader>
+                                    <v-subheader hide-details>ລະຫັດຜ່ານ:</v-subheader>
                                 </v-row>
                             </v-col>
                             <v-col cols="9" sm="9">
-                                <v-radio-group v-model="row" row>
-                                    <v-radio label="ຍິງ" value="radio-1"></v-radio>
-                                    <v-radio label="ຊາຍ" value="radio-2"></v-radio>
-                                    <v-radio label="LGBTQ+" value="radio-2"></v-radio>
-                                </v-radio-group>
-
+                                <v-text-field hide-details="auto" single-line outlined></v-text-field>
                             </v-col>
-                            <v-col cols="11" sm="11">
-                                <v-btn text @click="settingaccount">
-                                    <small class="d-flex justify-end">*ປ່ຽນຊື່ຜູ້ໃຊ້ອີເມວ ແລະ ລະຫັດຜ່ານໃໝ່</small>
-                                </v-btn>
-                            </v-col>
-
                         </v-row>
+
 
                         <v-row>
                             <v-col class="d-flex justify-center ">
@@ -93,7 +83,6 @@
   
 <script>
 import gql from 'graphql-tag';
-import settingAccount from './settingAccount.vue';
 const MY_QUERY = gql`
   query {
     title
@@ -102,7 +91,6 @@ const MY_QUERY = gql`
 `;
 
 export default {
-    components: { settingAccount },
     data: () => ({
         row: null,
         avatar: null,
@@ -129,13 +117,8 @@ export default {
         },
         close() {
             this.dialog = false
-            this.$emit('update:edit_profile', false)
+            this.$emit('update:settingAccount', false)
         },
-
-        settingaccount() {
-            this.dialog = false
-            this.settingAccount = true;
-        }
     },
     computed: {
         dialog: {

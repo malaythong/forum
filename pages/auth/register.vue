@@ -7,35 +7,37 @@
               <h2>Register</h2>
             </v-card-title>
             <v-card-text>
-              <v-form @submit="register">
-                <v-text-field
-                  v-model="username"
-                  label="Username"
-                  required
-                ></v-text-field>
+              <v-form @submit="ລົງທະບຽນ">
                 <v-text-field
                   v-model="email"
-                  label="Email"
-                  type="email"
+                  label="ອີເມວ"
+                  type="ອີເມວ"
                   required
                 ></v-text-field>
+
+                <v-text-field
+                  v-model="username"
+                  label="ຊື່ຜູ້ໃຊ້"
+                  required
+                ></v-text-field>
+                
                 <v-text-field
                   v-model="password"
-                  label="Password"
-                  type="password"
+                  label="ລະຫັດຜ່ານ"
+                  type="ລະຫັດຜ່ານ"
                   required
                 ></v-text-field>
                 <v-text-field
                   v-model="confirmPassword"
-                  label="Confirm Password"
-                  type="password"
+                  label="ໃສ່ລະຫັດຜ່ານອີກຄັ້ງ"
+                  type="ລະຫັດຜ່ານ"
                   required
                 ></v-text-field>
-                <v-btn type="submit" color="primary" block>Register</v-btn>
+                <v-btn type="submit" color="primary" block>ດຳເນີນການຕໍ່</v-btn>
               </v-form>
             </v-card-text>
             <v-card-actions>
-              <router-link to="/login">Already have an account? Login</router-link>
+              <router-link to="/login">ມີບັນຊີແລ້ວ ເຂົ້າສູ່ລະບົບ</router-link>
             </v-card-actions>
           </v-card>
         </v-col>
