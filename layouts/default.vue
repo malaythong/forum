@@ -30,16 +30,16 @@
         <v-icon>mdi-comment-plus-outline</v-icon>
         <span>ສ້າງກະທູ້ໃໝ່</span>
       </v-btn>
-      <v-btn color="primary" icon>
+      <!-- <v-btn color="primary" icon>
         <v-icon>mdi-bell</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
           <v-tooltip bottom>
             <template v-slot:activator="{ on: tooltipOn }">
               <v-avatar color="primary" dark v-on="{ ...tooltipOn, ...on }">
-                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+                <img src="https://www.newshub.co.nz/home/lifestyle/2019/08/the-top-five-cat-memes-of-all-time-rated/_jcr_content/par/video/image.dynimg.1280.q75.jpg/v1565234972425/KNOWYOURMEME-sad-cat-crying-1120.jpg" alt="John" />
               </v-avatar>
             </template>
             <span>Profile</span>
@@ -82,7 +82,7 @@ export default {
       items: [
         {
           icon: "mdi-home",
-          title: "Home Page",
+          title: "ໜ້າຫຼັຫ",
           to: "/content",
         },
         {
@@ -172,4 +172,5 @@ export default {
 #app{
   font-family: 'Phetsarath', sans-serif;                                  
 }
+
 </style>

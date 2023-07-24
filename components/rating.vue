@@ -1,8 +1,4 @@
 <template>
-    <div>
-        <v-btn @click="openRatingDialog">Open Rating Dialog</v-btn>
-
-        <!-- Rating Dialog -->
         <v-dialog v-model="ratingDialog" max-width="500">
             <v-card>
                 <v-card-title>Rate This Item</v-card-title>
@@ -15,15 +11,15 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-    </div>
 </template>
   
 <script>
 export default {
     data() {
-        return {
-            ratingDialog: false,
-        };
+
+    },
+    props: {
+        value: Boolean,
     },
     methods: {
         openRatingDialog() {
@@ -36,6 +32,16 @@ export default {
             console.log('Rating submitted:', this.rating);
             this.ratingDialog = false;
         },
+    },
+    computed: {
+        ratingDialog: {
+            get() {
+                return this.value;
+            },
+            set(value) {
+                this.$emit("input", value)
+            }
+        }
     },
 };
 </script>

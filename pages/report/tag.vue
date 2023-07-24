@@ -2,16 +2,16 @@
     <v-data-table :headers="headers" :items="desserts" sort-by="topic" class="elevation-1">
         <template v-slot:top>
             <v-toolbar flat>
-                <v-toolbar-title style="color: primary" class="font-weight-black ">ຈັດການຂໍ້ມູນແທັກ</v-toolbar-title>
+                <v-toolbar-title style="color: primary" class="font-weight-black ">ລາຍງານຂໍ້ມູນກະທູ້</v-toolbar-title>
                 <v-divider class="mx-4" inset vertical></v-divider>
-
+  
                 <v-dialog v-model="dialog" max-width="500px">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn color="primary ml-6 font-weight-bold" dark class="mb-2" v-bind="attrs" v-on="on">
                             + ເພີ່ມໃໝ່
                         </v-btn>
                         <v-spacer></v-spacer>
-                        <subtitle-1 style="font-size: 14px;"> ຈຳນວນ 50 ແທັກ </subtitle-1>
+                        <subtitle-1 style="font-size: 14px;"> ຈຳນວນ 5 ໝວດໝູ່ </subtitle-1>
                     </template>
                     <v-card id="card">
                         <v-row>
@@ -20,18 +20,18 @@
                                     mdi-close
                                 </v-icon>
                             </v-col>
-
+  
                         </v-row>
                         <v-card-title>
                             <span class="text-h5">{{ formTitle }}</span>
                         </v-card-title>
-
+  
                         <v-card-text>
                             <v-container>
                                 <v-row>
                                     <v-row>
                                         <v-col cols="4">
-                                            <v-subheader>ລະຫັດແທັກ:</v-subheader>
+                                            <v-subheader>ລະຫັດໝວດໝູ່:</v-subheader>
                                         </v-col>
                                         <v-col cols="8" sm="8" class="mx-auto">
                                             <v-text-field single-line outlined v-model="editedItem.id"
@@ -40,31 +40,17 @@
                                     </v-row>
                                     <v-row>
                                         <v-col cols="4">
-                                            <v-subheader>ຊື່ແທັກ:</v-subheader>
+                                            <v-subheader>ຊື່ໝວດໝູ່:</v-subheader>
                                         </v-col>
                                         <v-col cols="12" sm="8">
                                             <v-text-field single-line outlined v-model="editedItem.topic"
                                                 label="Text"></v-text-field>
                                         </v-col>
                                     </v-row>
-                                    <v-row>
-                                        <v-col cols="4">
-                                            <v-subheader>ໝວດໝູ່:</v-subheader>
-                                        </v-col>
-                                        <v-col cols="12" sm="8">
-                                            <v-text-field single-line outlined v-model="editedItem.detail"
-                                                label="Text"></v-text-field>
-                                        </v-col>
-                                        <v-col cols="12" sm="8">
-                                            <v-textarea single-line outlined v-model="editedItem.detail"
-                                                label="Text"></v-textarea>
-                                        </v-col>
-
-                                    </v-row>
                                 </v-row>
                             </v-container>
                         </v-card-text>
-
+  
                         <v-card-actions>
                             <v-col class="d-flex  justify-center">
                                 <v-btn color="primary" class="ml-6 font-weight-bold" dark @click="save">
@@ -101,9 +87,9 @@
             </v-btn>
         </template>
     </v-data-table>
-</template>
-<script>
-export default {
+  </template>
+  <script>
+  export default {
     data: () => ({
         selectedFile: null,
         dialog: false,
@@ -136,13 +122,13 @@ export default {
             tagUsed: 0,
         },
     }),
-
+  
     computed: {
         formTitle() {
             return this.editedIndex === -1 ? 'ເພີ່ມຂໍ້ມູນແທັກ' : 'ແກ້ໄຂຂໍ້ມູນແທັກ'
         },
     },
-
+  
     watch: {
         dialog(val) {
             val || this.close()
@@ -151,11 +137,11 @@ export default {
             val || this.closeDelete()
         },
     },
-
+  
     created() {
         this.initialize()
     },
-
+  
     methods: {
         initialize() {
             this.desserts = [
@@ -191,24 +177,24 @@ export default {
                 },
             ]
         },
-
+  
         editItem(item) {
             this.editedIndex = this.desserts.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialog = true
         },
-
+  
         deleteItem(item) {
             this.editedIndex = this.desserts.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialogDelete = true
         },
-
+  
         deleteItemConfirm() {
             this.desserts.splice(this.editedIndex, 1)
             this.closeDelete()
         },
-
+  
         close() {
             this.dialog = false
             this.$nextTick(() => {
@@ -216,7 +202,7 @@ export default {
                 this.editedIndex = -1
             })
         },
-
+  
         closeDelete() {
             this.dialogDelete = false
             this.$nextTick(() => {
@@ -224,7 +210,7 @@ export default {
                 this.editedIndex = -1
             })
         },
-
+  
         save() {
             if (this.editedIndex > -1) {
                 Object.assign(this.desserts[this.editedIndex], this.editedItem)
@@ -234,12 +220,12 @@ export default {
             this.close()
         },
     },
-}
-</script>
+  }
+  </script>
   
-<style scoped>
-#card {
+  <style scoped>
+  #card {
     overflow-y: hidden;
     overflow-x: hidden;
-}
-</style>
+  }
+  </style>

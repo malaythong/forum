@@ -13,16 +13,14 @@
                 <v-card-title>
                     <v-row>
                         <v-col class=" d-flex justify-center" no-gutters>
-                            <span class="text-h5">ສິ່ງທີ່ສົນໃຈ</span>
+                            <h3>ສິ່ງທີ່ສົນໃຈ</h3>
                         </v-col>
                     </v-row>
                 </v-card-title>
 
                 <v-card-text>
                     <v-col class=" d-flex justify-center" no-gutters>
-                        <h2 class="text-caption mb-2">
-                            ເລືອກສິ່ງທີ່ທ່ານສົນໃຈຢ່າງໜ້ອຍ 3 ຢ່າງຂຶ້ນໄປເພື່ອໃຫ້ສະແດງໃນໜ້າຫຼັກຂອງທ່ານ
-                        </h2>
+                        <caption>ເລືອກສິ່ງທີ່ທ່ານສົນໃຈຢ່າງໜ້ອຍ 3 ຢ່າງຂຶ້ນໄປເພື່ອໃຫ້ສະແດງໃນໜ້າຫຼັກຂອງທ່ານ</caption>
                     </v-col>
 
                     <v-chip-group v-model="interest" column multiple>
@@ -48,7 +46,7 @@ export default {
         return {
             interestDialog: true,
             interest: [],
-            interestOptions: ["Elevator", "Washer / Dryer", "Fireplace", "Wheelchair access", "Dogs ok", "Cats ok"],
+            interestOptions: ["ສາຍການຮຽນ", "ອາຊີບ", "ຄອບຄົວ", "ຄວາມຮັກ", "ການສຶກສາ"],
         };
     },
     methods: {

@@ -4,9 +4,6 @@
       <v-row justify="center">
         <v-col cols="12" sm="8">
           <v-card elevation="0">
-            <v-card-title class="text-center ">
-              <v-row><h2 class="primary--text">Forum Detail</h2></v-row>
-            </v-card-title>
             <v-card-text class="mx-0 ma-0 pa-0 mt-4">
               <v-card  class="mb-3">
                 <v-row no-gutters>

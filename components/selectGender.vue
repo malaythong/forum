@@ -12,17 +12,18 @@
                 <v-card-title>
                     <v-row>
                         <v-col class=" d-flex justify-center" no-gutters>
-                            <span class="text-h5">ກ່ຽວກັບທ່ານ</span>
+                            <h3>ກ່ຽວກັບທ່ານ</h3>
                         </v-col>
                     </v-row>
                 </v-card-title>
                 <v-col class=" d-flex justify-center" no-gutters>
-                    <span class="text-caption mb-2">ໃຫ້ຂໍ້ມູນທ່ານຕໍ່ພວກເຮົາເພື່ອການແນະນຳເນື້ອຫາທີ່ເໝາະສົມສຳລັບທ່ານ</span>
+                    <caption>ໃຫ້ຂໍ້ມູນທ່ານຕໍ່ພວກເຮົາເພື່ອການແນະນຳເນື້ອຫາທີ່ເໝາະສົມສຳລັບທ່ານ</caption>
                 </v-col>
                 <v-col class=" d-flex justify-center" no-gutters>
-                    <span class="text-h6 ">ເພດ</span>
+                    <h4>ເພດ</h4>
                 </v-col>
-                <v-row align="center">
+                
+                <v-row align="center" class="mb-6">
                     <v-col>
                         <div v-for="(option, index) in genderOptions" :key="index" class="text-center">
                             <div class="my-4">
