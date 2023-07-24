@@ -4,24 +4,23 @@
       <v-col cols="12" sm="10" md="8">
         <v-card>
           <v-card-title class="text-center">
-            <h2>Profile</h2>
+            <h2>ຂໍ້ມູນຜູ້ໃຊ້</h2>
           </v-card-title>
           <v-card-text>
             <v-card v-for="(post, index) in posts" :key="index" class="mb-3">
               <v-row no-gutters>
                 <v-col cols="2" class="d-flex align-center ml-6">
-                  <v-img :src="post.cover" height="50%" width="100%"></v-img>
+                  <v-img :src="post.cover" height="80%" width="100%"></v-img>
                 </v-col>
 
                 <v-col cols="8">
                   <v-card-text class="custom-line-spacing">
-                    <p>ຊື່ ແລະ ນາມສະກຸນ:</p>
+                    <p>ຊື່ຜູ້ໃຊ້:</p>
                     <p>ເພດ:</p>
-                    <p>ວັນເດືອນປີເກີດ:</p>
                     <p>ທີ່ຢູ່:</p>
                   </v-card-text>
                   <v-card-actions>
-                    <v-btn text color="primary">ແກ້ໄຂຂໍ້ມູນສ່ວນຕົວ</v-btn>
+                    <v-btn text color="primary" @click="edit_profile">ແກ້ໄຂຂໍ້ມູນສ່ວນຕົວ</v-btn>
                   </v-card-actions>
                 </v-col>
               </v-row>
@@ -47,7 +46,9 @@
 </template>
 
 <script>
+import edit_profile from "~/components/edit_profile"
 export default {
+  components: { edit_profile},
   data() {
     return {
       posts: [
@@ -57,6 +58,11 @@ export default {
       ],
     };
   },
+  methods: {
+    editprofile() {
+            this.edit_profile = true;
+        }
+  }
 };
 </script>
 

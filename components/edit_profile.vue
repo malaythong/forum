@@ -14,7 +14,7 @@
                 <v-card-title>
                     <v-row>
                         <v-col class=" d-flex justify-center" no-gutters>
-                            <span class="text-h5">ແກ້ໄຂຂໍ້ມູນຜູ້ໃຊ້</span>
+                            <h2>ແກ້ໄຂຂໍ້ມູນສ່ວນຕົວ</h2>
                         </v-col>
                     </v-row>
                 </v-card-title>

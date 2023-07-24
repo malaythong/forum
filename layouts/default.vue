@@ -163,8 +163,13 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.cdnfonts.com/css/phetsarath');
+
 .custom-text-field {
   width: 50px;
   /* Adjust the width as needed */
+}
+#app{
+  font-family: 'Phetsarath', sans-serif;                                  
 }
 </style>
