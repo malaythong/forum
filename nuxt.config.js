@@ -23,33 +23,65 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   // plugins: [{ src: "~/plugins/apollo.js", mode: "client" }],
 
-  apollo: {
-    cookieAttributes: {
-      expires: 7,
-    },
+  // apollo: {
+  //   cookieAttributes: {
+  //     expires: 7,
+  //   },
 
-    defaultOptions: {
-      $query: {
-        loadingKey: "loading",
-        fetchPolicy: "no-cache",
-        errorPolicy: "all",
-      },
-    },
+  //   defaultOptions: {
+  //     $query: {
+  //       loadingKey: "loading",
+  //       fetchPolicy: "no-cache",
+  //       errorPolicy: "all",
+  //     },
+  //   },
+  //   clientConfigs: {
+  //     default: {
+  //       // YOUR ENDPOINT OF YOUR APOLLO CLIENT OR HASURA ENDPOINT
+  //       httpEndpoint: "https://big-baboon-88.hasura.app/v1/graphql",
+  //       wsEndpoint: "wss://big-baboon-88.hasura.app/v1/graphql",
+  //       tokenName: "access_token",
+  //       includeNodeModules: true,
+  //       authenticationType: "Bearer",
+  //       httpLinkOptions: {
+  //         headers: {
+  //           "content-type": "application/json",
+  //           "Access-Control-Allow-Origin": "*",
+  //           "Access-Control-Allow-Methods": "GET,PUT,PATCH,OPTIONS,DELETE,POST",
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
+
+  apollo: {
+    errorHandler: "~/plugins/apollo-error-handler.js",
     clientConfigs: {
       default: {
-        // YOUR ENDPOINT OF YOUR APOLLO CLIENT OR HASURA ENDPOINT
-        httpEndpoint: "https://big-baboon-88.hasura.app/v1/graphql",
-        wsEndpoint: "wss://big-baboon-88.hasura.app/v1/graphql",
-        tokenName: "access_token",
-        includeNodeModules: true,
-        authenticationType: "Bearer",
-        httpLinkOptions: {
-          headers: {
-            "content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,PATCH,OPTIONS,DELETE,POST",
+        httpEndpoint: 'https://poetic-jaybird-10.hasura.app/v1/graphql',
+        wsEndpoint: 'ws://poetic-jaybird-10.hasura.app/v1/graphql',
+        wsLinkOptions: {
+          reconnect: true,
+        },
+        defaultOptions: {
+          $query: {
+            fetchPolicy: "no-cache",
+            errorPolicy: "all",
+            notifyOnNetworkStatusChange: true,
           },
         },
+        httpLinkOptions: {
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+            // "Authorization": `Bearer ${token}`,
+          },
+        },
+
+        tokenName: "access_token",
+        authenticationType: "Bearer",
+        persisting: false,
+        // websocketsOnly: true,
       },
     },
   },
@@ -91,5 +123,14 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, { isClient }) {
+      // Add a rule for .gql files
+      config.module.rules.push({
+        test: /\.gql$/,
+        use: 'graphql-tag/loader',
+        exclude: /node_modules/,
+      });
+    },
+  },
 };

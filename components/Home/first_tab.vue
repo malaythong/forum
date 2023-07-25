@@ -4,6 +4,7 @@
       <v-col cols="12" sm="12">
         <v-card elevation="0">
           <v-card elevation="1"> </v-card>
+          
           <v-card-text class="mx-0 ma-0 pa-0 mt-12">
             <v-card v-for="(post, index) in posts" :key="index" class="mb-3" @click="goToForum">
               <v-row no-gutters>
@@ -16,7 +17,7 @@
                         class="uploaded-image rounded-lg"
                       ></v-img>
                     </v-avatar>
-                    <p class="ml-2 mt-2">{{ post.title }}</p>
+                    <p class="ml-2 mt-2">{{post.title }}</p>
                     <p class="ml-6 mt-2">{{ post.post_by }}</p>
                     <p class="ml-6 mt-2">{{ post.date }}</p>
                     </v-row
@@ -36,7 +37,7 @@
                     <v-img :src="post.cover" height="100%" width="100%"></v-img>
                   </v-col> -->
                 <v-col cols="12">
-                  <v-card-title>{{ post.title }}</v-card-title>
+                  <v-card-title>{{ post.getData }}</v-card-title>
                   <!-- <v-card-text>{{ post.content }}</v-card-text> -->
                   <!-- <v-card-actions>
                       <v-btn text color="primary">Read More</v-btn>
@@ -69,9 +70,54 @@
 </template>
 
 <script>
+// import { useQuery } from '@vue/apollo-composable';
+// import { gql } from 'graphql-tag';
+
+// Define your GraphQL query
+// const MY_QUERY = gql`
+//   query MyQuery {
+//     forum {
+//       detail
+//       image
+//       id
+//       tag_id
+//       topic
+//       updated_at
+//       created_at
+//       create_by
+//     }
+//   }
+// `;
 export default {
+//     setup() {
+//     const { result, loading, error } = useQuery(MY_QUERY);
+
+//     // Fetch data when the form is submitted
+//     const getDataAll = async () => {
+//       await result.value; // Wait for the data to be fetched
+//     };
+
+//     return {
+//       data: result.value?.data?.forum,
+//       loading,
+//       error,
+//       getDataAll,
+//     };
+//   },
+//     setup() {
+//     // Use the useQuery function to fetch data
+//     const { result, loading, error } = useQuery(MY_QUERY);
+
+//     return {
+//       data: result.value?.data,
+//       loading,
+//       error,
+//     };
+//   },
+
   data() {
     return {
+        getData:{},
       items: [
         { tab: "ທັງໝົດ", content: "Policy" },
         { tab: "ແນະນຳ", content: "CancelHistory" },
@@ -119,7 +165,37 @@ export default {
       return require("@/assets/images/message-circle.png");
     },
   },
+  mounted(){
+    this.getDataAll()
+  },
   methods: {
+    getDataAll() {
+            this.$apollo.query({
+                query: require('~/gql/queries/home/get_all_forum.gql')
+                  .default,
+                fetchPolicy: 'no-cache',
+              })
+              .then((result) => {
+                this.getData = result.data.forum
+               
+               
+              })
+              .catch((error) => {
+                console.log(error)
+               
+              })
+          },
+           // Swal.fire({
+                //   icon: 'info',
+                //   title: 'Something went wrong!',
+                //   text: 'Please try again later',
+                //   confirmButtonText: 'Reload',
+                //   confirmButtonColor: '#08b89d',
+                // }).then((result) => {
+                //   if (result.isConfirmed) {
+                //     window.location.href = '/'
+                //   }
+                // })
     goToForum() {
         this.$router.push("/content/Forum");
       },
