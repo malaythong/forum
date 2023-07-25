@@ -12,6 +12,7 @@
     "@apollo/client": "^3.7.17",
     "@apollo/server": "^4.7.5",
     "@nuxtjs/apollo": "^4.0.1-rc.5",
+    "apexcharts": "^3.41.0",
     "apollo-boost": "^0.4.9",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-server-micro": "^3.12.0",

@@ -39,8 +39,8 @@ export default {
     clientConfigs: {
       default: {
         // YOUR ENDPOINT OF YOUR APOLLO CLIENT OR HASURA ENDPOINT
-        httpEndpoint: "https://big-baboon-88.hasura.app/v1/graphql",
-        wsEndpoint: "wss://big-baboon-88.hasura.app/v1/graphql",
+        httpEndpoint: "https://poetic-jaybird-10.hasura.app/v1/graphql",
+        wsEndpoint: "https://poetic-jaybird-10.hasura.app/v1/graphql",
         tokenName: "access_token",
         includeNodeModules: true,
         authenticationType: "Bearer",

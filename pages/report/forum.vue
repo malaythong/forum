@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title>
-            ລາຍງານຂໍ້ມູນແທັກ
+            ລາຍງານຂໍ້ມູນກະທູ້
             <v-spacer></v-spacer>
             <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
         </v-card-title>
@@ -15,14 +15,16 @@ export default {
             search: '',
             headers: [
                 {
-                    text: 'ລະຫັດແທັກ',
+                    text: 'ລະຫັດກະທູ້',
                     align: 'start',
                     sortable: false,
                     value: 'name',
                 },
-                { text: 'ຊື່ແທັກ', value: 'calories' },
-                { text: 'ໝວດໝູ່', value: 'fat' },
-                { text: 'ການນຳໃຊ້', value: 'carbs' },
+                { text: 'ຊື່ກະທູ້', value: 'calories' },
+                { text: 'ຜູ້ສ້າງ', value: 'fat' },
+                { text: 'ສ້າງວັນທີ', value: 'carbs' },
+                { text: 'ການອ່ານ', value: 'protein' },
+                { text: 'ຈຳນວນ Rating', value: 'protein' },
             ],
             desserts: [
                 {
