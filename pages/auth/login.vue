@@ -3,27 +3,27 @@
       <v-row justify="center">
         <v-col cols="12" sm="8" md="4">
           <v-card>
-            <v-card-title class="text-center">
-              <h2>Login</h2>
+            <v-card-title>
+              <h2>ລົງຊື່ເຂົ້າໃຊ້</h2>
             </v-card-title>
             <v-card-text>
               <v-form @submit="login">
                 <v-text-field
                   v-model="username"
-                  label="Username"
+                  label="ຊື່ຜູ້ໃຊ້"
                   required
                 ></v-text-field>
                 <v-text-field
                   v-model="password"
-                  label="Password"
+                  label="ລະຫັດຜ່ານ"
                   type="password"
                   required
                 ></v-text-field>
-                <v-btn type="submit" color="primary" block>Login</v-btn>
+                <v-btn type="submit" color="primary" block>ເຂົ້າສູ່ລະບົບ</v-btn>
               </v-form>
             </v-card-text>
             <v-card-actions>
-                <router-link to="/auth/register">Don't have an account? Register</router-link>
+                <router-link to="/auth/register">ຍັງບໍ່ມີບັນຊີ? ລົງທະບຽນ</router-link>
             </v-card-actions>
           </v-card>
         </v-col>

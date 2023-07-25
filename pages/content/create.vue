@@ -30,7 +30,7 @@
             <v-textarea
               solo
               name="input-7-4"
-              label="Solo textarea"
+              label="ເນື້ອຫາ..."
             ></v-textarea>
           </v-col>
 
@@ -42,7 +42,6 @@
             <v-textarea
               solo
               name="input-7-4"
-              label="Solo textarea"
             ></v-textarea>
           </v-col>
           <v-col class="d-flex justify-end">

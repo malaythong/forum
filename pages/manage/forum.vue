@@ -2,7 +2,7 @@
   <v-data-table :headers="headers" :items="desserts" sort-by="topic" class="elevation-1">
     <template v-slot:top>
       <v-toolbar flat>
-        <v-toolbar-title style="color: primary" class="font-weight-black ">ຈັດການຂໍ້ມູນຜູ້ໃຊ້</v-toolbar-title>
+        <v-toolbar-title style="color: primary" class="font-weight-black ">ຈັດການຂໍ້ມູນກະທູ້</v-toolbar-title>
         <v-divider class="mx-4" inset vertical></v-divider>
 
         <v-dialog v-model="dialog" max-width="500px">
@@ -10,8 +10,6 @@
             <v-btn color="primary ml-6 font-weight-bold" dark class="mb-2" v-bind="attrs" v-on="on">
               + ເພີ່ມໃໝ່
             </v-btn>
-            <v-spacer></v-spacer>
-            <subtitle-1 style="font-size: 14px;"> ຈຳນວນ 500 ຄົນ </subtitle-1>
           </template>
           <v-card id="card">
             <v-row>
@@ -23,7 +21,11 @@
 
             </v-row>
             <v-card-title>
-              <span class="text-h5">{{ formTitle }}</span>
+              <v-row>
+                <v-col class=" d-flex justify-center mb-3" no-gutters>
+                  <h4>{{ formTitle }}</h4>
+                </v-col>
+              </v-row>
             </v-card-title>
 
             <v-card-text>
@@ -78,7 +80,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-              <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
+              <v-btn color="error" text @click="deleteItemConfirm">OK</v-btn>
               <v-spacer></v-spacer>
             </v-card-actions>
           </v-card>

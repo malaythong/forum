@@ -10,8 +10,7 @@
                         <v-btn color="primary ml-6 font-weight-bold" dark class="mb-2" v-bind="attrs" v-on="on">
                             + ເພີ່ມໃໝ່
                         </v-btn>
-                        <v-spacer></v-spacer>
-                        <subtitle-1 style="font-size: 14px;"> ຈຳນວນ 50 ແທັກ </subtitle-1>
+
                     </template>
                     <v-card id="card">
                         <v-row>
@@ -23,7 +22,11 @@
 
                         </v-row>
                         <v-card-title>
-                            <span class="text-h5">{{ formTitle }}</span>
+                            <v-row>
+                                <v-col class=" d-flex justify-center mb-3" no-gutters>
+                                    <h4>{{ formTitle }}</h4>
+                                </v-col>
+                            </v-row>
                         </v-card-title>
 
                         <v-card-text>
@@ -34,8 +37,7 @@
                                             <v-subheader>ລະຫັດແທັກ:</v-subheader>
                                         </v-col>
                                         <v-col cols="8" sm="8" class="mx-auto">
-                                            <v-text-field single-line outlined v-model="editedItem.id"
-                                                label="0001"></v-text-field>
+                                            <v-text-field single-line outlined v-model="editedItem.id"></v-text-field>
                                         </v-col>
                                     </v-row>
                                     <v-row>
@@ -43,8 +45,7 @@
                                             <v-subheader>ຊື່ແທັກ:</v-subheader>
                                         </v-col>
                                         <v-col cols="12" sm="8">
-                                            <v-text-field single-line outlined v-model="editedItem.topic"
-                                                label="Text"></v-text-field>
+                                            <v-text-field single-line outlined v-model="editedItem.topic"></v-text-field>
                                         </v-col>
                                     </v-row>
                                     <v-row>
@@ -52,17 +53,8 @@
                                             <v-subheader>ໝວດໝູ່:</v-subheader>
                                         </v-col>
                                         <v-col cols="12" sm="8">
-                                            <v-text-field single-line outlined v-model="editedItem.detail"
-                                                label="Text"></v-text-field>
+                                            <v-text-field single-line outlined v-model="editedItem.detail"></v-text-field>
                                         </v-col>
-                                        <v-col cols="4">
-                                            <v-subheader>ລາຍລະອຽດ:</v-subheader>
-                                        </v-col>
-                                        <v-col cols="12" sm="8">
-                                            <v-textarea single-line outlined v-model="editedItem.detail"
-                                                label="Text"></v-textarea>
-                                        </v-col>
-
                                     </v-row>
                                 </v-row>
                             </v-container>
@@ -79,11 +71,17 @@
                 </v-dialog>
                 <v-dialog v-model="dialogDelete" max-width="500px">
                     <v-card>
-                        <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+                        <v-card-title>
+                            <v-row>
+                                <v-col class=" d-flex justify-center" no-gutters>
+                                    <h3 class="text-primary">ຢືນຢັນການລຶບຂໍ້ມູນ</h3>
+                                </v-col>
+                            </v-row>
+                        </v-card-title>
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-                            <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
+                            <v-btn color="error" text @click="deleteItemConfirm">OK</v-btn>
                             <v-spacer></v-spacer>
                         </v-card-actions>
                     </v-card>
@@ -120,7 +118,6 @@ export default {
                 value: 'tagId',
             },
             { text: 'ຊື່ແທັກ', value: 'tagName' },
-            { text: 'ລາຍລະອຽດ', value: 'tagDetail' },
             { text: 'ໝວດໝູ່', value: 'tagCategory' },
             { text: 'ການນຳໃຊ້', value: 'tagUsed' },
             { text: 'ຈັດການ', value: 'actions', sortable: false },
@@ -130,14 +127,12 @@ export default {
         editedItem: {
             tagId: '',
             tagName: '',
-            tagDetail: '',
             tagCategory: '',
             tagUsed: 0,
         },
         defaultItem: {
             tagId: '',
             tagName: '',
-            tagDetail: '',
             tagCategory: '',
             tagUsed: 0,
         },
@@ -166,39 +161,34 @@ export default {
         initialize() {
             this.desserts = [
                 {
-                    tagId: 't0001',
-                    tagName: 'hello',
-                    tagDetail: '',
-                    tagCategory: 'greeting',
+                    tagId: '1',
+                    tagName: 'ຄອມພິວເຕີ',
+                    tagCategory: 'ເທັກໂນໂລຢີ',
                     tagUsed: 2,
                 },
                 {
-                    tagId: 't0001',
-                    tagName: 'hello',
-                    tagDetail: '',
-                    tagCategory: 'greeting',
-                    tagUsed: 2,
+                    tagId: '2',
+                    tagName: 'ການຮຽນ',
+                    tagCategory: 'ການສຶກສາ',
+                    tagUsed: 1,
                 },
                 {
-                    tagId: 't0001',
-                    tagName: 'hello',
-                    tagDetail: '',
-                    tagCategory: 'greeting',
-                    tagUsed: 2,
+                    tagId: '3',
+                    tagName: 'ຄວາມຮັກ',
+                    tagCategory: 'ຄວາມຮັກ',
+                    tagUsed: 5,
                 },
                 {
-                    tagId: 't0001',
-                    tagName: 'hello',
-                    tagDetail: '',
-                    tagCategory: 'greeting',
-                    tagUsed: 2,
+                    tagId: '4',
+                    tagName: 'ທຶນການສຶກສາ',
+                    tagCategory: 'ການສຶກສາ',
+                    tagUsed: 4,
                 },
                 {
-                    tagId: 't0001',
-                    tagName: 'hello',
-                    tagDetail: '',
-                    tagCategory: 'greeting',
-                    tagUsed: 2,
+                    tagId: '5',
+                    tagName: 'ສຸຂະພາບ',
+                    tagCategory: 'ສຸຂະພາບ',
+                    tagUsed: 3,
                 },
             ]
         },
